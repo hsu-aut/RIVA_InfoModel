@@ -1,0 +1,559 @@
+@prefix : <http://w3id.org/hsu-aut/SA_InformationModel/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix SA_InformationModel: <http://w3id.org/hsu-aut/SA_InformationModel#> .
+@base <http://w3id.org/hsu-aut/SA_InformationModel/> .
+
+<http://w3id.org/hsu-aut/SA_InformationModel> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#AMRexecutes
+SA_InformationModel:AMRexecutes rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf SA_InformationModel:DeAggregation ;
+                                rdf:type owl:InverseFunctionalProperty ,
+                                         owl:AsymmetricProperty ,
+                                         owl:IrreflexiveProperty ;
+                                rdfs:domain SA_InformationModel:Autonomous_Mobile_Robot ;
+                                rdfs:range SA_InformationModel:Act ,
+                                           SA_InformationModel:Decide ,
+                                           SA_InformationModel:ObserveOrient .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Association
+SA_InformationModel:Association rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#DeAggregation
+SA_InformationModel:DeAggregation rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Inheritance
+SA_InformationModel:Inheritance rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#actConsistsOf
+SA_InformationModel:actConsistsOf rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf SA_InformationModel:Inheritance ;
+                                  rdf:type owl:InverseFunctionalProperty ,
+                                           owl:AsymmetricProperty ,
+                                           owl:IrreflexiveProperty ;
+                                  rdfs:domain SA_InformationModel:Act ;
+                                  rdfs:range SA_InformationModel:Communication ,
+                                             SA_InformationModel:Locomotion ,
+                                             SA_InformationModel:Manipulation .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#actInfluences
+SA_InformationModel:actInfluences rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf SA_InformationModel:Association ;
+                                  rdf:type owl:FunctionalProperty ,
+                                           owl:InverseFunctionalProperty ,
+                                           owl:AsymmetricProperty ,
+                                           owl:IrreflexiveProperty ;
+                                  rdfs:domain SA_InformationModel:Act ;
+                                  rdfs:range SA_InformationModel:ObserveOrient .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#cmConsistsOf
+SA_InformationModel:cmConsistsOf rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf SA_InformationModel:DeAggregation ;
+                                 rdf:type owl:InverseFunctionalProperty ,
+                                          owl:AsymmetricProperty ,
+                                          owl:IrreflexiveProperty ;
+                                 rdfs:domain SA_InformationModel:ConstraintManagement ;
+                                 rdfs:range SA_InformationModel:Diagnosis ,
+                                            SA_InformationModel:EnergyManagement ,
+                                            SA_InformationModel:SafetyManagement .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#comConsistsOf
+SA_InformationModel:comConsistsOf rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf SA_InformationModel:DeAggregation ;
+                                  rdf:type owl:InverseFunctionalProperty ,
+                                           owl:AsymmetricProperty ,
+                                           owl:IrreflexiveProperty ;
+                                  rdfs:domain SA_InformationModel:Communication ;
+                                  rdfs:range SA_InformationModel:Proactive ,
+                                             SA_InformationModel:Reactive .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#cwmConsistsOf
+SA_InformationModel:cwmConsistsOf rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf SA_InformationModel:DeAggregation ;
+                                  rdf:type owl:InverseFunctionalProperty ,
+                                           owl:AsymmetricProperty ,
+                                           owl:IrreflexiveProperty ;
+                                  rdfs:domain SA_InformationModel:ConductedWorldModel ;
+                                  rdfs:range SA_InformationModel:ExternalWorld ,
+                                             SA_InformationModel:InternalWorld .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#decConsistsOf
+SA_InformationModel:decConsistsOf rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf SA_InformationModel:Inheritance ;
+                                  rdf:type owl:InverseFunctionalProperty ,
+                                           owl:AsymmetricProperty ,
+                                           owl:IrreflexiveProperty ;
+                                  rdfs:domain SA_InformationModel:Decide ;
+                                  rdfs:range SA_InformationModel:ConstraintManagement ,
+                                             SA_InformationModel:MissionManagement .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#decInfluences
+SA_InformationModel:decInfluences rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf SA_InformationModel:Association ;
+                                  rdf:type owl:FunctionalProperty ,
+                                           owl:InverseFunctionalProperty ,
+                                           owl:AsymmetricProperty ,
+                                           owl:IrreflexiveProperty ;
+                                  rdfs:domain SA_InformationModel:Decide ;
+                                  rdfs:range SA_InformationModel:Act .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#eiConsistsOf
+SA_InformationModel:eiConsistsOf rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf SA_InformationModel:DeAggregation ;
+                                 rdf:type owl:InverseFunctionalProperty ,
+                                          owl:AsymmetricProperty ,
+                                          owl:IrreflexiveProperty ;
+                                 rdfs:domain SA_InformationModel:External_Information ;
+                                 rdfs:range SA_InformationModel:Area ,
+                                            SA_InformationModel:Fire ,
+                                            SA_InformationModel:Gate ,
+                                            SA_InformationModel:Object ,
+                                            SA_InformationModel:Tank ,
+                                            SA_InformationModel:Time ,
+                                            SA_InformationModel:Weather .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#eiInfluences
+SA_InformationModel:eiInfluences rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf SA_InformationModel:Association ;
+                                 rdf:type owl:FunctionalProperty ,
+                                          owl:InverseFunctionalProperty ,
+                                          owl:AsymmetricProperty ,
+                                          owl:IrreflexiveProperty ;
+                                 rdfs:domain SA_InformationModel:External_Information ;
+                                 rdfs:range SA_InformationModel:ConductedWorldModel .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#hgiConsistsOf
+SA_InformationModel:hgiConsistsOf rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf SA_InformationModel:DeAggregation ;
+                                  rdf:type owl:InverseFunctionalProperty ,
+                                           owl:AsymmetricProperty ,
+                                           owl:IrreflexiveProperty ;
+                                  rdfs:domain SA_InformationModel:HumanGiven_Information ;
+                                  rdfs:range SA_InformationModel:Constraint ,
+                                             SA_InformationModel:Mission .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#hgiInfluences
+SA_InformationModel:hgiInfluences rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf SA_InformationModel:Association ;
+                                  rdf:type owl:FunctionalProperty ,
+                                           owl:InverseFunctionalProperty ,
+                                           owl:AsymmetricProperty ,
+                                           owl:IrreflexiveProperty ;
+                                  rdfs:domain SA_InformationModel:HumanGiven_Information ;
+                                  rdfs:range SA_InformationModel:ConductedWorldModel .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#iiConsistsOf
+SA_InformationModel:iiConsistsOf rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf SA_InformationModel:DeAggregation ;
+                                 rdf:type owl:InverseFunctionalProperty ,
+                                          owl:AsymmetricProperty ,
+                                          owl:IrreflexiveProperty ;
+                                 rdfs:domain SA_InformationModel:Internal_Information ;
+                                 rdfs:range SA_InformationModel:Acceleration ,
+                                            SA_InformationModel:Position ,
+                                            SA_InformationModel:Status ,
+                                            SA_InformationModel:Velocity .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#iiInfluences
+SA_InformationModel:iiInfluences rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf SA_InformationModel:Association ;
+                                 rdf:type owl:FunctionalProperty ,
+                                          owl:InverseFunctionalProperty ,
+                                          owl:AsymmetricProperty ,
+                                          owl:IrreflexiveProperty ;
+                                 rdfs:domain SA_InformationModel:Internal_Information ;
+                                 rdfs:range SA_InformationModel:ConductedWorldModel .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#kiInfluences
+SA_InformationModel:kiInfluences rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf SA_InformationModel:Association ;
+                                 rdf:type owl:FunctionalProperty ,
+                                          owl:InverseFunctionalProperty ,
+                                          owl:AsymmetricProperty ,
+                                          owl:IrreflexiveProperty ;
+                                 rdfs:domain SA_InformationModel:KnowledgeInference ;
+                                 rdfs:range SA_InformationModel:ConductedWorldModel .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#locoConsistsOf
+SA_InformationModel:locoConsistsOf rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf SA_InformationModel:DeAggregation ;
+                                   rdf:type owl:InverseFunctionalProperty ,
+                                            owl:AsymmetricProperty ,
+                                            owl:IrreflexiveProperty ;
+                                   rdfs:domain SA_InformationModel:Locomotion ;
+                                   rdfs:range SA_InformationModel:AbsoluteMotion ,
+                                              SA_InformationModel:PlatformStabilization .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#manConsistsOf
+SA_InformationModel:manConsistsOf rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf SA_InformationModel:DeAggregation ;
+                                  rdf:type owl:InverseFunctionalProperty ,
+                                           owl:AsymmetricProperty ,
+                                           owl:IrreflexiveProperty ;
+                                  rdfs:domain SA_InformationModel:Manipulation ;
+                                  rdfs:range SA_InformationModel:Robot-Environment ,
+                                             SA_InformationModel:Robot-Human ,
+                                             SA_InformationModel:Robot-Robot ,
+                                             SA_InformationModel:Self-Manipulation .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#mmConsistsOf
+SA_InformationModel:mmConsistsOf rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf SA_InformationModel:DeAggregation ;
+                                 rdf:type owl:InverseFunctionalProperty ,
+                                          owl:AsymmetricProperty ,
+                                          owl:IrreflexiveProperty ;
+                                 rdfs:domain SA_InformationModel:MissionManagement ;
+                                 rdfs:range SA_InformationModel:ActionEvaluation ,
+                                            SA_InformationModel:ActionSelection ,
+                                            SA_InformationModel:Plan .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#objectHasTypes
+SA_InformationModel:objectHasTypes rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf SA_InformationModel:Inheritance ;
+                                   rdfs:domain SA_InformationModel:Object ;
+                                   rdfs:range SA_InformationModel:Fire ,
+                                              SA_InformationModel:Gate ,
+                                              SA_InformationModel:Tank .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#ooConsistsOf
+SA_InformationModel:ooConsistsOf rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf SA_InformationModel:Inheritance ;
+                                 rdf:type owl:InverseFunctionalProperty ,
+                                          owl:AsymmetricProperty ,
+                                          owl:IrreflexiveProperty ;
+                                 rdfs:domain SA_InformationModel:ObserveOrient ;
+                                 rdfs:range SA_InformationModel:External_Information ,
+                                            SA_InformationModel:HumanGiven_Information ,
+                                            SA_InformationModel:Internal_Information .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#ooInfluences
+SA_InformationModel:ooInfluences rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf SA_InformationModel:Association ;
+                                 rdf:type owl:FunctionalProperty ,
+                                          owl:InverseFunctionalProperty ,
+                                          owl:AsymmetricProperty ,
+                                          owl:IrreflexiveProperty ;
+                                 rdfs:domain SA_InformationModel:ObserveOrient ;
+                                 rdfs:range SA_InformationModel:Decide .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Area_ID
+SA_InformationModel:Area_ID rdf:type owl:DatatypeProperty ;
+                            rdfs:domain SA_InformationModel:Area ;
+                            rdfs:range xsd:int .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Armed
+SA_InformationModel:Armed rdf:type owl:DatatypeProperty ;
+                          rdfs:domain SA_InformationModel:Status ;
+                          rdfs:range xsd:boolean .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#BatteryPercentage
+SA_InformationModel:BatteryPercentage rdf:type owl:DatatypeProperty ,
+                                               owl:FunctionalProperty ;
+                                      rdfs:domain SA_InformationModel:Status ;
+                                      rdfs:range xsd:integer ;
+                                      rdfs:comment "0 - 100%" .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#GateIsOpen
+SA_InformationModel:GateIsOpen rdf:type owl:DatatypeProperty ;
+                               rdfs:domain SA_InformationModel:Gate ;
+                               rdfs:range xsd:boolean .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Groundspeed
+SA_InformationModel:Groundspeed rdf:type owl:DatatypeProperty ;
+                                rdfs:domain SA_InformationModel:Velocity ;
+                                rdfs:range xsd:float .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#LastSamplingTime
+SA_InformationModel:LastSamplingTime rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain SA_InformationModel:Tank ;
+                                     rdfs:range xsd:dateTimeStamp .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#LocalTime
+SA_InformationModel:LocalTime rdf:type owl:DatatypeProperty ;
+                              rdfs:domain SA_InformationModel:Time ;
+                              rdfs:range xsd:dateTime .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Object_ID
+SA_InformationModel:Object_ID rdf:type owl:DatatypeProperty ;
+                              rdfs:domain SA_InformationModel:Object ;
+                              rdfs:range xsd:int .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#PositionAltitude
+SA_InformationModel:PositionAltitude rdf:type owl:DatatypeProperty ;
+                                     rdfs:range xsd:float .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#PositionLatitude
+SA_InformationModel:PositionLatitude rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain SA_InformationModel:Fire ,
+                                                 SA_InformationModel:Gate ,
+                                                 SA_InformationModel:Tank ;
+                                     rdfs:range xsd:float .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#PositionLongitude
+SA_InformationModel:PositionLongitude rdf:type owl:DatatypeProperty ;
+                                      rdfs:domain SA_InformationModel:Fire ,
+                                                  SA_InformationModel:Gate ,
+                                                  SA_InformationModel:Tank ;
+                                      rdfs:range xsd:float .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Timestamp
+SA_InformationModel:Timestamp rdf:type owl:DatatypeProperty ;
+                              rdfs:domain SA_InformationModel:Communication ;
+                              rdfs:range xsd:dateTimeStamp .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#UxV_ID
+SA_InformationModel:UxV_ID rdf:type owl:DatatypeProperty ;
+                           rdfs:domain SA_InformationModel:Autonomous_Mobile_Robot ;
+                           rdfs:range xsd:integer .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#UxV_Type
+SA_InformationModel:UxV_Type rdf:type owl:DatatypeProperty ;
+                             rdfs:domain SA_InformationModel:Autonomous_Mobile_Robot ;
+                             rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#AbsoluteMotion
+SA_InformationModel:AbsoluteMotion rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Acceleration
+SA_InformationModel:Acceleration rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Act
+SA_InformationModel:Act rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#ActionEvaluation
+SA_InformationModel:ActionEvaluation rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#ActionSelection
+SA_InformationModel:ActionSelection rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Area
+SA_InformationModel:Area rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Autonomous_Mobile_Robot
+SA_InformationModel:Autonomous_Mobile_Robot rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Communication
+SA_InformationModel:Communication rdf:type owl:Class ;
+                                  rdfs:subClassOf SA_InformationModel:Act .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#ConductedWorldModel
+SA_InformationModel:ConductedWorldModel rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Constraint
+SA_InformationModel:Constraint rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#ConstraintManagement
+SA_InformationModel:ConstraintManagement rdf:type owl:Class ;
+                                         rdfs:subClassOf SA_InformationModel:Decide .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Decide
+SA_InformationModel:Decide rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Diagnosis
+SA_InformationModel:Diagnosis rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#EnergyManagement
+SA_InformationModel:EnergyManagement rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#ExternalWorld
+SA_InformationModel:ExternalWorld rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#External_Information
+SA_InformationModel:External_Information rdf:type owl:Class ;
+                                         rdfs:subClassOf SA_InformationModel:ObserveOrient .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Fire
+SA_InformationModel:Fire rdf:type owl:Class ;
+                         rdfs:subClassOf SA_InformationModel:Object .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Gate
+SA_InformationModel:Gate rdf:type owl:Class ;
+                         rdfs:subClassOf SA_InformationModel:Object .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#HumanGiven_Information
+SA_InformationModel:HumanGiven_Information rdf:type owl:Class ;
+                                           rdfs:subClassOf SA_InformationModel:ObserveOrient .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#InternalWorld
+SA_InformationModel:InternalWorld rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Internal_Information
+SA_InformationModel:Internal_Information rdf:type owl:Class ;
+                                         rdfs:subClassOf SA_InformationModel:ObserveOrient .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#KnowledgeInference
+SA_InformationModel:KnowledgeInference rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Locomotion
+SA_InformationModel:Locomotion rdf:type owl:Class ;
+                               rdfs:subClassOf SA_InformationModel:Act .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Manipulation
+SA_InformationModel:Manipulation rdf:type owl:Class ;
+                                 rdfs:subClassOf SA_InformationModel:Act .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Mission
+SA_InformationModel:Mission rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#MissionManagement
+SA_InformationModel:MissionManagement rdf:type owl:Class ;
+                                      rdfs:subClassOf SA_InformationModel:Decide .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Object
+SA_InformationModel:Object rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#ObserveOrient
+SA_InformationModel:ObserveOrient rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Plan
+SA_InformationModel:Plan rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#PlatformStabilization
+SA_InformationModel:PlatformStabilization rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Position
+SA_InformationModel:Position rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Proactive
+SA_InformationModel:Proactive rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Reactive
+SA_InformationModel:Reactive rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Robot-Environment
+SA_InformationModel:Robot-Environment rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Robot-Human
+SA_InformationModel:Robot-Human rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Robot-Robot
+SA_InformationModel:Robot-Robot rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#SafetyManagement
+SA_InformationModel:SafetyManagement rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Self-Manipulation
+SA_InformationModel:Self-Manipulation rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Status
+SA_InformationModel:Status rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Tank
+SA_InformationModel:Tank rdf:type owl:Class ;
+                         rdfs:subClassOf SA_InformationModel:Object .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Time
+SA_InformationModel:Time rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Velocity
+SA_InformationModel:Velocity rdf:type owl:Class .
+
+
+###  http://w3id.org/hsu-aut/SA_InformationModel#Weather
+SA_InformationModel:Weather rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
