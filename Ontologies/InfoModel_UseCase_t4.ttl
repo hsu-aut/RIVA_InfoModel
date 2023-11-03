@@ -1,0 +1,790 @@
+@prefix : <http://w3id.org/hsu-aut/SA_InformationModel/> .
+@prefix SA_InformationModel: <http://w3id.org/hsu-aut/SA_InformationModel#> .
+@prefix ns1: <http://www.w3.org/2003/11/swrl#> .
+@prefix ns2: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns2:isRuleEnabled a owl:AnnotationProperty .
+
+<http://w3id.org/hsu-aut/SA_InformationModel> a owl:Ontology .
+
+SA_InformationModel:AMR_ID a owl:DatatypeProperty ;
+    rdfs:domain SA_InformationModel:Autonomous_Mobile_Robot ;
+    rdfs:range xsd:int .
+
+SA_InformationModel:AMR_Type a owl:DatatypeProperty ;
+    rdfs:domain SA_InformationModel:Autonomous_Mobile_Robot ;
+    rdfs:range xsd:string .
+
+SA_InformationModel:AMRexecutes a owl:AsymmetricProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:Autonomous_Mobile_Robot ;
+    rdfs:range SA_InformationModel:Act,
+        SA_InformationModel:Decide,
+        SA_InformationModel:ObserveOrient ;
+    rdfs:subPropertyOf SA_InformationModel:DeAggregation .
+
+SA_InformationModel:Area_ID a owl:DatatypeProperty ;
+    rdfs:domain SA_InformationModel:Area ;
+    rdfs:range xsd:int .
+
+SA_InformationModel:Armed a owl:DatatypeProperty ;
+    rdfs:domain SA_InformationModel:Status ;
+    rdfs:range xsd:boolean .
+
+SA_InformationModel:GateIsOpen a owl:DatatypeProperty ;
+    rdfs:domain SA_InformationModel:Gate ;
+    rdfs:range xsd:boolean .
+
+SA_InformationModel:Groundspeed a owl:DatatypeProperty ;
+    rdfs:domain SA_InformationModel:Velocity ;
+    rdfs:range xsd:float .
+
+SA_InformationModel:LastSamplingTime a owl:DatatypeProperty ;
+    rdfs:domain SA_InformationModel:Tank ;
+    rdfs:range xsd:dateTimeStamp .
+
+SA_InformationModel:LocalTime a owl:DatatypeProperty ;
+    rdfs:domain SA_InformationModel:Time ;
+    rdfs:range xsd:dateTime .
+
+SA_InformationModel:Object_ID a owl:DatatypeProperty ;
+    rdfs:domain SA_InformationModel:Fire,
+        SA_InformationModel:Gate,
+        SA_InformationModel:Object,
+        SA_InformationModel:Tank ;
+    rdfs:range xsd:int .
+
+SA_InformationModel:PositionAltitude a owl:DatatypeProperty ;
+    rdfs:domain SA_InformationModel:Position ;
+    rdfs:range xsd:float .
+
+SA_InformationModel:PositionLatitude a owl:DatatypeProperty ;
+    rdfs:domain SA_InformationModel:Position ;
+    rdfs:range xsd:float .
+
+SA_InformationModel:PositionLongitude a owl:DatatypeProperty ;
+    rdfs:domain SA_InformationModel:Position ;
+    rdfs:range xsd:float .
+
+SA_InformationModel:Timestamp a owl:DatatypeProperty ;
+    rdfs:domain SA_InformationModel:Communication ;
+    rdfs:range xsd:dateTimeStamp .
+
+SA_InformationModel:UAV_1 a SA_InformationModel:Autonomous_Mobile_Robot,
+        owl:NamedIndividual ;
+    SA_InformationModel:AMR_ID 1 ;
+    SA_InformationModel:AMR_Type "UAV" ;
+    SA_InformationModel:AMRexecutes SA_InformationModel:UAV_1_Act_t1,
+        SA_InformationModel:UAV_1_Act_t2,
+        SA_InformationModel:UAV_1_Act_t3,
+        SA_InformationModel:UAV_1_Act_t4,
+        SA_InformationModel:UAV_1_Decide_t1,
+        SA_InformationModel:UAV_1_Decide_t2,
+        SA_InformationModel:UAV_1_Decide_t3,
+        SA_InformationModel:UAV_1_Decide_t4,
+        SA_InformationModel:UAV_1_Observation_t1,
+        SA_InformationModel:UAV_1_Observation_t2,
+        SA_InformationModel:UAV_1_Observation_t3,
+        SA_InformationModel:UAV_1_Observation_t4 .
+
+SA_InformationModel:UAV_1_Observation_t0 a SA_InformationModel:ObserveOrient,
+        owl:NamedIndividual ;
+    SA_InformationModel:ooConsistsOf SA_InformationModel:UAV_1_HGI_t0 .
+
+SA_InformationModel:UGV_2 a SA_InformationModel:Autonomous_Mobile_Robot,
+        owl:NamedIndividual ;
+    SA_InformationModel:AMR_ID 2 ;
+    SA_InformationModel:AMR_Type "UGV" ;
+    SA_InformationModel:AMRexecutes SA_InformationModel:UGV_2_Act_t4,
+        SA_InformationModel:UGV_2_Decide_t4 .
+
+SA_InformationModel:UGV_2_HGI_t0 a SA_InformationModel:HumanGiven_Information,
+        owl:NamedIndividual ;
+    SA_InformationModel:hgiConsistsOf SA_InformationModel:CloseGate,
+        SA_InformationModel:ExtinguishFire .
+
+SA_InformationModel:UGV_2_Observation_t0 a SA_InformationModel:ObserveOrient,
+        owl:NamedIndividual .
+
+SA_InformationModel:UGV_3 a SA_InformationModel:Autonomous_Mobile_Robot,
+        owl:NamedIndividual ;
+    SA_InformationModel:AMR_ID 3 ;
+    SA_InformationModel:AMR_Type "UGV" ;
+    SA_InformationModel:AMRexecutes SA_InformationModel:UGV_3_Decide_t4 .
+
+SA_InformationModel:UGV_3_HGI_t0 a SA_InformationModel:HumanGiven_Information,
+        owl:NamedIndividual ;
+    SA_InformationModel:hgiConsistsOf SA_InformationModel:ExtinguishFire,
+        SA_InformationModel:SampleTank .
+
+SA_InformationModel:UGV_3_Observation_t0 a SA_InformationModel:ObserveOrient,
+        owl:NamedIndividual .
+
+SA_InformationModel:actConsistsOf a owl:AsymmetricProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:Act ;
+    rdfs:range SA_InformationModel:Communication,
+        SA_InformationModel:Locomotion,
+        SA_InformationModel:Manipulation ;
+    rdfs:subPropertyOf SA_InformationModel:Inheritance .
+
+SA_InformationModel:actInfluences a owl:AsymmetricProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:Act ;
+    rdfs:range SA_InformationModel:ObserveOrient ;
+    rdfs:subPropertyOf SA_InformationModel:Association .
+
+SA_InformationModel:cmConsistsOf a owl:AsymmetricProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:ConstraintManagement ;
+    rdfs:range SA_InformationModel:Diagnosis,
+        SA_InformationModel:EnergyManagement,
+        SA_InformationModel:SafetyManagement ;
+    rdfs:subPropertyOf SA_InformationModel:DeAggregation .
+
+SA_InformationModel:comConsistsOf a owl:AsymmetricProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:Communication ;
+    rdfs:range SA_InformationModel:Proactive,
+        SA_InformationModel:Reactive ;
+    rdfs:subPropertyOf SA_InformationModel:DeAggregation .
+
+SA_InformationModel:cwmConsistsOf a owl:AsymmetricProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:ConductedWorldModel ;
+    rdfs:range SA_InformationModel:ExternalWorld,
+        SA_InformationModel:InternalWorld ;
+    rdfs:subPropertyOf SA_InformationModel:DeAggregation .
+
+SA_InformationModel:decConsistsOf a owl:AsymmetricProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:Decide ;
+    rdfs:range SA_InformationModel:ConstraintManagement,
+        SA_InformationModel:MissionManagement ;
+    rdfs:subPropertyOf SA_InformationModel:Inheritance .
+
+SA_InformationModel:decInfluences a owl:AsymmetricProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:Decide ;
+    rdfs:range SA_InformationModel:Act ;
+    rdfs:subPropertyOf SA_InformationModel:Association .
+
+SA_InformationModel:eiConsistsOf a owl:AsymmetricProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:External_Information ;
+    rdfs:range SA_InformationModel:Area,
+        SA_InformationModel:Fire,
+        SA_InformationModel:Gate,
+        SA_InformationModel:Object,
+        SA_InformationModel:Tank,
+        SA_InformationModel:Time,
+        SA_InformationModel:Weather ;
+    rdfs:subPropertyOf SA_InformationModel:DeAggregation .
+
+SA_InformationModel:eiInfluences a owl:AsymmetricProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:External_Information ;
+    rdfs:range SA_InformationModel:ConductedWorldModel ;
+    rdfs:subPropertyOf SA_InformationModel:Association .
+
+SA_InformationModel:hasAction a owl:InverseFunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:AbsoluteMotion,
+        SA_InformationModel:Plan ;
+    rdfs:range SA_InformationModel:Action,
+        SA_InformationModel:Close,
+        SA_InformationModel:Extinguish,
+        SA_InformationModel:Monitor,
+        SA_InformationModel:MoveToPosition,
+        SA_InformationModel:Sample .
+
+SA_InformationModel:hasPosition a owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:Fire,
+        SA_InformationModel:Gate,
+        SA_InformationModel:Object,
+        SA_InformationModel:Tank ;
+    rdfs:range SA_InformationModel:Position .
+
+SA_InformationModel:hgiConsistsOf a owl:AsymmetricProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:HumanGiven_Information ;
+    rdfs:range SA_InformationModel:Constraint,
+        SA_InformationModel:Mission ;
+    rdfs:subPropertyOf SA_InformationModel:DeAggregation .
+
+SA_InformationModel:hgiInfluences a owl:AsymmetricProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:HumanGiven_Information ;
+    rdfs:range SA_InformationModel:ConductedWorldModel ;
+    rdfs:subPropertyOf SA_InformationModel:Association .
+
+SA_InformationModel:iiConsistsOf a owl:AsymmetricProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:Internal_Information ;
+    rdfs:range SA_InformationModel:Acceleration,
+        SA_InformationModel:Position,
+        SA_InformationModel:Status,
+        SA_InformationModel:Velocity ;
+    rdfs:subPropertyOf SA_InformationModel:DeAggregation .
+
+SA_InformationModel:iiInfluences a owl:AsymmetricProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:Internal_Information ;
+    rdfs:range SA_InformationModel:ConductedWorldModel ;
+    rdfs:subPropertyOf SA_InformationModel:Association .
+
+SA_InformationModel:kiInfluences a owl:AsymmetricProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:KnowledgeInference ;
+    rdfs:range SA_InformationModel:ConductedWorldModel ;
+    rdfs:subPropertyOf SA_InformationModel:Association .
+
+SA_InformationModel:locoConsistsOf a owl:AsymmetricProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:Locomotion ;
+    rdfs:range SA_InformationModel:AbsoluteMotion,
+        SA_InformationModel:PlatformStabilization ;
+    rdfs:subPropertyOf SA_InformationModel:DeAggregation .
+
+SA_InformationModel:manConsistsOf a owl:AsymmetricProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:Manipulation ;
+    rdfs:range SA_InformationModel:Robot-Environment,
+        SA_InformationModel:Robot-Human,
+        SA_InformationModel:Robot-Robot,
+        SA_InformationModel:Self-Manipulation ;
+    rdfs:subPropertyOf SA_InformationModel:DeAggregation .
+
+SA_InformationModel:mmConsistsOf a owl:AsymmetricProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:MissionManagement ;
+    rdfs:range SA_InformationModel:ActionEvaluation,
+        SA_InformationModel:ActionSelection,
+        SA_InformationModel:Plan ;
+    rdfs:subPropertyOf SA_InformationModel:DeAggregation .
+
+SA_InformationModel:objectHasTypes a owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:Object ;
+    rdfs:range SA_InformationModel:Fire,
+        SA_InformationModel:Gate,
+        SA_InformationModel:Tank ;
+    rdfs:subPropertyOf SA_InformationModel:Inheritance .
+
+SA_InformationModel:ooConsistsOf a owl:AsymmetricProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:ObserveOrient ;
+    rdfs:range SA_InformationModel:External_Information,
+        SA_InformationModel:HumanGiven_Information,
+        SA_InformationModel:Internal_Information ;
+    rdfs:subPropertyOf SA_InformationModel:Inheritance .
+
+SA_InformationModel:ooInfluences a owl:AsymmetricProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain SA_InformationModel:ObserveOrient ;
+    rdfs:range SA_InformationModel:Decide ;
+    rdfs:subPropertyOf SA_InformationModel:Association .
+
+SA_InformationModel:Acceleration a owl:Class .
+
+SA_InformationModel:ActionEvaluation a owl:Class .
+
+SA_InformationModel:ActionSelection a owl:Class .
+
+SA_InformationModel:BatteryCritical a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain SA_InformationModel:Status ;
+    rdfs:range xsd:boolean .
+
+SA_InformationModel:BatteryPercentage a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:comment "0 - 100%" ;
+    rdfs:domain SA_InformationModel:Status ;
+    rdfs:range xsd:integer .
+
+SA_InformationModel:CloseGate a SA_InformationModel:Mission,
+        owl:NamedIndividual .
+
+SA_InformationModel:CriticalBatteryLevel a SA_InformationModel:Constraint,
+        owl:NamedIndividual .
+
+SA_InformationModel:Diagnosis a owl:Class .
+
+SA_InformationModel:EnergyManagement a owl:Class .
+
+SA_InformationModel:ExternalWorld a owl:Class .
+
+SA_InformationModel:Extinguish a owl:Class ;
+    rdfs:subClassOf SA_InformationModel:Action .
+
+SA_InformationModel:Gate01_t_2 a SA_InformationModel:Gate,
+        owl:NamedIndividual ;
+    SA_InformationModel:GateIsOpen false ;
+    SA_InformationModel:Object_ID "Gate01" ;
+    SA_InformationModel:hasPosition SA_InformationModel:Position_Gate_t2 .
+
+SA_InformationModel:Gate02_t_4 a SA_InformationModel:Gate,
+        owl:NamedIndividual ;
+    SA_InformationModel:GateIsOpen true ;
+    SA_InformationModel:Object_ID "Gate02" ;
+    SA_InformationModel:hasPosition SA_InformationModel:Position_Gate_t4 .
+
+SA_InformationModel:InternalWorld a owl:Class .
+
+SA_InformationModel:KnowledgeInference a owl:Class .
+
+SA_InformationModel:Monitor a owl:Class ;
+    rdfs:subClassOf SA_InformationModel:Action .
+
+SA_InformationModel:MonitorArea a SA_InformationModel:Mission,
+        owl:NamedIndividual .
+
+SA_InformationModel:PlatformStabilization a owl:Class .
+
+SA_InformationModel:Position_Gate_t2 a SA_InformationModel:Position,
+        owl:NamedIndividual ;
+    SA_InformationModel:PositionAltitude 0e+00 ;
+    SA_InformationModel:PositionLatitude "53.567207"^^xsd:float ;
+    SA_InformationModel:PositionLongitude "10.109953"^^xsd:float .
+
+SA_InformationModel:Position_Gate_t4 a SA_InformationModel:Position,
+        owl:NamedIndividual ;
+    SA_InformationModel:PositionAltitude 0e+00 ;
+    SA_InformationModel:PositionLatitude "53.566765"^^xsd:float ;
+    SA_InformationModel:PositionLongitude "10.110404"^^xsd:float .
+
+SA_InformationModel:Position_Tank_t1 a SA_InformationModel:Position,
+        owl:NamedIndividual ;
+    SA_InformationModel:PositionAltitude 0e+00 ;
+    SA_InformationModel:PositionLatitude "53.567154"^^xsd:float ;
+    SA_InformationModel:PositionLongitude "10.110621"^^xsd:float .
+
+SA_InformationModel:Position_Tank_t3 a SA_InformationModel:Position,
+        owl:NamedIndividual ;
+    SA_InformationModel:PositionAltitude 0e+00 ;
+    SA_InformationModel:PositionLatitude "53.566845"^^xsd:float ;
+    SA_InformationModel:PositionLongitude "10.109717"^^xsd:float .
+
+SA_InformationModel:Position_UAV_1_t1 a SA_InformationModel:Position,
+        owl:NamedIndividual ;
+    SA_InformationModel:PositionAltitude 0e+00 ;
+    SA_InformationModel:PositionLatitude "53.567154"^^xsd:float ;
+    SA_InformationModel:PositionLongitude "10.110621"^^xsd:float .
+
+SA_InformationModel:Position_UAV_1_t2 a SA_InformationModel:Position,
+        owl:NamedIndividual ;
+    SA_InformationModel:PositionAltitude 0e+00 ;
+    SA_InformationModel:PositionLatitude "53.567207"^^xsd:float ;
+    SA_InformationModel:PositionLongitude "10.109953"^^xsd:float .
+
+SA_InformationModel:Position_UAV_1_t3 a SA_InformationModel:Position,
+        owl:NamedIndividual ;
+    SA_InformationModel:PositionAltitude 0e+00 ;
+    SA_InformationModel:PositionLatitude "53.566845"^^xsd:float ;
+    SA_InformationModel:PositionLongitude "10.109717"^^xsd:float .
+
+SA_InformationModel:Position_UAV_1_t4 a SA_InformationModel:Position,
+        owl:NamedIndividual ;
+    SA_InformationModel:PositionAltitude 0e+00 ;
+    SA_InformationModel:PositionLatitude "53.566765"^^xsd:float ;
+    SA_InformationModel:PositionLongitude "10.110404"^^xsd:float .
+
+SA_InformationModel:Proactive a owl:Class .
+
+SA_InformationModel:Reactive a owl:Class .
+
+SA_InformationModel:Robot-Environment a owl:Class .
+
+SA_InformationModel:Robot-Human a owl:Class .
+
+SA_InformationModel:Robot-Robot a owl:Class .
+
+SA_InformationModel:SafetyManagement a owl:Class .
+
+SA_InformationModel:Sample a owl:Class ;
+    rdfs:subClassOf SA_InformationModel:Action .
+
+SA_InformationModel:SampleTank a SA_InformationModel:Mission,
+        owl:NamedIndividual .
+
+SA_InformationModel:Self-Manipulation a owl:Class .
+
+SA_InformationModel:Tank01_t_1 a SA_InformationModel:Tank,
+        owl:NamedIndividual ;
+    SA_InformationModel:LastSamplingTime 0 ;
+    SA_InformationModel:Object_ID "Tank01" ;
+    SA_InformationModel:hasPosition SA_InformationModel:Position_Tank_t1 .
+
+SA_InformationModel:Tank02_t_3 a SA_InformationModel:Tank,
+        owl:NamedIndividual ;
+    SA_InformationModel:LastSamplingTime 0 ;
+    SA_InformationModel:Object_ID "Tank02" ;
+    SA_InformationModel:hasPosition SA_InformationModel:Position_Tank_t3 .
+
+SA_InformationModel:UAV_1_Act_t1 a SA_InformationModel:Act,
+        owl:NamedIndividual ;
+    SA_InformationModel:actConsistsOf SA_InformationModel:UAV_1_Locomotion_t1 .
+
+SA_InformationModel:UAV_1_Act_t2 a SA_InformationModel:Act,
+        owl:NamedIndividual ;
+    SA_InformationModel:actConsistsOf SA_InformationModel:UAV_1_Locomotion_t2 .
+
+SA_InformationModel:UAV_1_Act_t3 a SA_InformationModel:Act,
+        owl:NamedIndividual ;
+    SA_InformationModel:actConsistsOf SA_InformationModel:UAV_1_Locomotion_t3 .
+
+SA_InformationModel:UAV_1_Act_t4 a SA_InformationModel:Act,
+        owl:NamedIndividual ;
+    SA_InformationModel:actConsistsOf SA_InformationModel:UAV_1_Locomotion_t4 .
+
+SA_InformationModel:UAV_1_Decide_t1 a SA_InformationModel:Decide,
+        owl:NamedIndividual ;
+    SA_InformationModel:decConsistsOf SA_InformationModel:UAV_1_Plan_t1 .
+
+SA_InformationModel:UAV_1_Decide_t2 a SA_InformationModel:Decide,
+        owl:NamedIndividual ;
+    SA_InformationModel:decConsistsOf SA_InformationModel:UAV_1_Plan_t2 .
+
+SA_InformationModel:UAV_1_Decide_t3 a SA_InformationModel:Decide,
+        owl:NamedIndividual ;
+    SA_InformationModel:decConsistsOf SA_InformationModel:UAV_1_Plan_t3 .
+
+SA_InformationModel:UAV_1_Decide_t4 a SA_InformationModel:Decide,
+        owl:NamedIndividual ;
+    SA_InformationModel:decConsistsOf SA_InformationModel:UAV_1_Plan_t4 .
+
+SA_InformationModel:UAV_1_ExtInfo_t1 a SA_InformationModel:External_Information,
+        owl:NamedIndividual ;
+    SA_InformationModel:eiConsistsOf SA_InformationModel:Tank01_t_1 .
+
+SA_InformationModel:UAV_1_ExtInfo_t2 a SA_InformationModel:External_Information,
+        owl:NamedIndividual ;
+    SA_InformationModel:eiConsistsOf SA_InformationModel:Gate01_t_2 .
+
+SA_InformationModel:UAV_1_ExtInfo_t3 a SA_InformationModel:External_Information,
+        owl:NamedIndividual ;
+    SA_InformationModel:eiConsistsOf SA_InformationModel:Tank02_t_3 .
+
+SA_InformationModel:UAV_1_ExtInfo_t4 a SA_InformationModel:External_Information,
+        owl:NamedIndividual ;
+    SA_InformationModel:eiConsistsOf SA_InformationModel:Gate02_t_4 .
+
+SA_InformationModel:UAV_1_HGI_t0 a SA_InformationModel:HumanGiven_Information,
+        owl:NamedIndividual ;
+    SA_InformationModel:hgiConsistsOf SA_InformationModel:CriticalBatteryLevel,
+        SA_InformationModel:MonitorArea .
+
+SA_InformationModel:UAV_1_IntInfo_t1 a SA_InformationModel:Internal_Information,
+        owl:NamedIndividual ;
+    SA_InformationModel:hasPosition SA_InformationModel:Position_UAV_1_t1 ;
+    SA_InformationModel:iiConsistsOf SA_InformationModel:UAV_1_Status_t1 .
+
+SA_InformationModel:UAV_1_IntInfo_t2 a SA_InformationModel:Internal_Information,
+        owl:NamedIndividual ;
+    SA_InformationModel:hasPosition SA_InformationModel:Position_UAV_1_t2 ;
+    SA_InformationModel:iiConsistsOf SA_InformationModel:UAV_1_Status_t2 .
+
+SA_InformationModel:UAV_1_IntInfo_t3 a SA_InformationModel:Internal_Information,
+        owl:NamedIndividual ;
+    SA_InformationModel:hasPosition SA_InformationModel:Position_UAV_1_t3 ;
+    SA_InformationModel:iiConsistsOf SA_InformationModel:UAV_1_Status_t3 .
+
+SA_InformationModel:UAV_1_IntInfo_t4 a SA_InformationModel:Internal_Information,
+        owl:NamedIndividual ;
+    SA_InformationModel:hasPosition SA_InformationModel:Position_UAV_1_t4 ;
+    SA_InformationModel:iiConsistsOf SA_InformationModel:UAV_1_Status_t4 .
+
+SA_InformationModel:UAV_1_Locomotion_t1 a SA_InformationModel:Locomotion,
+        owl:NamedIndividual ;
+    SA_InformationModel:hasAction SA_InformationModel:UAV_1_Locomotion_t1_MoveToPosition .
+
+SA_InformationModel:UAV_1_Locomotion_t1_MoveToPosition a SA_InformationModel:MoveToPosition,
+        owl:NamedIndividual .
+
+SA_InformationModel:UAV_1_Locomotion_t2 a SA_InformationModel:Locomotion,
+        owl:NamedIndividual ;
+    SA_InformationModel:hasAction SA_InformationModel:UAV_1_Locomotion_t2_MoveToPosition .
+
+SA_InformationModel:UAV_1_Locomotion_t2_MoveToPosition a SA_InformationModel:MoveToPosition,
+        owl:NamedIndividual .
+
+SA_InformationModel:UAV_1_Locomotion_t3 a SA_InformationModel:Locomotion,
+        owl:NamedIndividual ;
+    SA_InformationModel:hasAction SA_InformationModel:UAV_1_Locomotion_t3_MoveToPosition .
+
+SA_InformationModel:UAV_1_Locomotion_t3_MoveToPosition a SA_InformationModel:MoveToPosition,
+        owl:NamedIndividual .
+
+SA_InformationModel:UAV_1_Locomotion_t4 a SA_InformationModel:Locomotion,
+        owl:NamedIndividual ;
+    SA_InformationModel:hasAction SA_InformationModel:UAV_1_Locomotion_t4_MoveToPosition .
+
+SA_InformationModel:UAV_1_Locomotion_t4_MoveToPosition a SA_InformationModel:MoveToPosition,
+        owl:NamedIndividual .
+
+SA_InformationModel:UAV_1_Observation_t1 a SA_InformationModel:ObserveOrient,
+        owl:NamedIndividual ;
+    SA_InformationModel:ooConsistsOf SA_InformationModel:UAV_1_ExtInfo_t1,
+        SA_InformationModel:UAV_1_IntInfo_t1 .
+
+SA_InformationModel:UAV_1_Observation_t2 a SA_InformationModel:ObserveOrient,
+        owl:NamedIndividual ;
+    SA_InformationModel:ooConsistsOf SA_InformationModel:UAV_1_ExtInfo_t2,
+        SA_InformationModel:UAV_1_IntInfo_t2 .
+
+SA_InformationModel:UAV_1_Observation_t3 a SA_InformationModel:ObserveOrient,
+        owl:NamedIndividual ;
+    SA_InformationModel:ooConsistsOf SA_InformationModel:UAV_1_ExtInfo_t3,
+        SA_InformationModel:UAV_1_IntInfo_t3 .
+
+SA_InformationModel:UAV_1_Observation_t4 a SA_InformationModel:ObserveOrient,
+        owl:NamedIndividual ;
+    SA_InformationModel:ooConsistsOf SA_InformationModel:UAV_1_ExtInfo_t4,
+        SA_InformationModel:UAV_1_IntInfo_t4 .
+
+SA_InformationModel:UAV_1_Plan_t1 a SA_InformationModel:Plan,
+        owl:NamedIndividual ;
+    SA_InformationModel:hasAction SA_InformationModel:UAV_1_Plan_t1_Seq01_MoveToPosition .
+
+SA_InformationModel:UAV_1_Plan_t1_Seq01_MoveToPosition a SA_InformationModel:MoveToPosition,
+        owl:NamedIndividual .
+
+SA_InformationModel:UAV_1_Plan_t2 a SA_InformationModel:Plan,
+        owl:NamedIndividual ;
+    SA_InformationModel:hasAction SA_InformationModel:UAV_1_Plan_t2_Seq01_MoveToPosition .
+
+SA_InformationModel:UAV_1_Plan_t2_Seq01_MoveToPosition a SA_InformationModel:MoveToPosition,
+        owl:NamedIndividual .
+
+SA_InformationModel:UAV_1_Plan_t3 a SA_InformationModel:Plan,
+        owl:NamedIndividual ;
+    SA_InformationModel:hasAction SA_InformationModel:UAV_1_Plan_t3_Seq01_MoveToPosition .
+
+SA_InformationModel:UAV_1_Plan_t3_Seq01_MoveToPosition a SA_InformationModel:MoveToPosition,
+        owl:NamedIndividual .
+
+SA_InformationModel:UAV_1_Plan_t4 a SA_InformationModel:Plan,
+        owl:NamedIndividual ;
+    SA_InformationModel:hasAction SA_InformationModel:UAV_1_Plan_t4_Seq01_MoveToPosition .
+
+SA_InformationModel:UAV_1_Plan_t4_Seq01_MoveToPosition a SA_InformationModel:MoveToPosition,
+        owl:NamedIndividual .
+
+SA_InformationModel:UAV_1_Status_t1 a SA_InformationModel:Status,
+        owl:NamedIndividual ;
+    SA_InformationModel:BatteryPercentage "95"^^xsd:int .
+
+SA_InformationModel:UAV_1_Status_t2 a SA_InformationModel:Status,
+        owl:NamedIndividual ;
+    SA_InformationModel:BatteryPercentage "90"^^xsd:int .
+
+SA_InformationModel:UAV_1_Status_t3 a SA_InformationModel:Status,
+        owl:NamedIndividual ;
+    SA_InformationModel:BatteryPercentage "85"^^xsd:int .
+
+SA_InformationModel:UAV_1_Status_t4 a SA_InformationModel:Status,
+        owl:NamedIndividual ;
+    SA_InformationModel:BatteryPercentage "80"^^xsd:int .
+
+SA_InformationModel:UGV_2_Act_t4 a SA_InformationModel:Act,
+        owl:NamedIndividual ;
+    SA_InformationModel:actConsistsOf SA_InformationModel:UGV_2_Locomotion_t4 .
+
+SA_InformationModel:UGV_2_Decide_t4 a SA_InformationModel:Decide,
+        owl:NamedIndividual ;
+    SA_InformationModel:decConsistsOf SA_InformationModel:UGV_2_Plan_t4 .
+
+SA_InformationModel:UGV_2_Locomotion_t4 a SA_InformationModel:Locomotion,
+        owl:NamedIndividual ;
+    SA_InformationModel:hasAction SA_InformationModel:UGV_2_Locomotion_t4_MoveToPosition .
+
+SA_InformationModel:UGV_2_Locomotion_t4_MoveToPosition a SA_InformationModel:MoveToPosition,
+        owl:NamedIndividual .
+
+SA_InformationModel:UGV_2_Plan_t4 a SA_InformationModel:Plan,
+        owl:NamedIndividual ;
+    SA_InformationModel:hasAction SA_InformationModel:UGV_2_Plan_t4_Seq01_MoveToPosition,
+        SA_InformationModel:UGV_2_Plan_t4_Seq02_Close,
+        SA_InformationModel:UGV_2_Plan_t4_Seq03_MoveToPosition .
+
+SA_InformationModel:UGV_2_Plan_t4_Seq01_MoveToPosition a SA_InformationModel:MoveToPosition,
+        owl:NamedIndividual .
+
+SA_InformationModel:UGV_2_Plan_t4_Seq02_Close a SA_InformationModel:Close,
+        owl:NamedIndividual .
+
+SA_InformationModel:UGV_2_Plan_t4_Seq03_MoveToPosition a SA_InformationModel:MoveToPosition,
+        owl:NamedIndividual .
+
+SA_InformationModel:UGV_3_Decide_t4 a SA_InformationModel:Decide,
+        owl:NamedIndividual ;
+    SA_InformationModel:decConsistsOf SA_InformationModel:UGV_3_Plan_t4_Wait .
+
+SA_InformationModel:UGV_3_Plan_t4_Wait a SA_InformationModel:Plan,
+        owl:NamedIndividual .
+
+SA_InformationModel:Weather a owl:Class .
+
+SA_InformationModel:AbsoluteMotion a owl:Class .
+
+SA_InformationModel:Area a owl:Class .
+
+SA_InformationModel:Close a owl:Class ;
+    rdfs:subClassOf SA_InformationModel:Action .
+
+SA_InformationModel:Constraint a owl:Class .
+
+SA_InformationModel:ConstraintManagement a owl:Class ;
+    rdfs:subClassOf SA_InformationModel:Decide .
+
+SA_InformationModel:ExtinguishFire a SA_InformationModel:Mission,
+        owl:NamedIndividual .
+
+SA_InformationModel:Manipulation a owl:Class ;
+    rdfs:subClassOf SA_InformationModel:Act .
+
+SA_InformationModel:MissionManagement a owl:Class ;
+    rdfs:subClassOf SA_InformationModel:Decide .
+
+SA_InformationModel:Time a owl:Class .
+
+SA_InformationModel:Velocity a owl:Class .
+
+:BP a ns1:Variable .
+
+SA_InformationModel:Communication a owl:Class ;
+    rdfs:subClassOf SA_InformationModel:Act .
+
+:S a ns1:Variable .
+
+SA_InformationModel:Fire a owl:Class ;
+    rdfs:subClassOf SA_InformationModel:Object .
+
+SA_InformationModel:Inheritance a owl:ObjectProperty .
+
+SA_InformationModel:ConductedWorldModel a owl:Class .
+
+SA_InformationModel:Mission a owl:Class .
+
+SA_InformationModel:Action a owl:Class .
+
+SA_InformationModel:Autonomous_Mobile_Robot a owl:Class .
+
+SA_InformationModel:HumanGiven_Information a owl:Class ;
+    rdfs:subClassOf SA_InformationModel:ObserveOrient .
+
+SA_InformationModel:Association a owl:ObjectProperty .
+
+SA_InformationModel:External_Information a owl:Class ;
+    rdfs:subClassOf SA_InformationModel:ObserveOrient .
+
+SA_InformationModel:Gate a owl:Class ;
+    rdfs:subClassOf SA_InformationModel:Object .
+
+SA_InformationModel:Internal_Information a owl:Class ;
+    rdfs:subClassOf SA_InformationModel:ObserveOrient .
+
+SA_InformationModel:Locomotion a owl:Class ;
+    rdfs:subClassOf SA_InformationModel:Act .
+
+SA_InformationModel:Object a owl:Class .
+
+SA_InformationModel:Tank a owl:Class ;
+    rdfs:subClassOf SA_InformationModel:Object .
+
+SA_InformationModel:Plan a owl:Class .
+
+SA_InformationModel:Status a owl:Class .
+
+SA_InformationModel:DeAggregation a owl:ObjectProperty .
+
+SA_InformationModel:Act a owl:Class .
+
+SA_InformationModel:Decide a owl:Class .
+
+SA_InformationModel:MoveToPosition a owl:Class ;
+    rdfs:subClassOf SA_InformationModel:Action .
+
+SA_InformationModel:Position a owl:Class .
+
+SA_InformationModel:ObserveOrient a owl:Class .
+
+[] a ns1:Imp ;
+    rdfs:label "Constraint_Battery" ;
+    ns2:isRuleEnabled true ;
+    rdfs:comment "Critical Battery" ;
+    ns1:body [ a ns1:AtomList ;
+            rdf:first [ a ns1:ClassAtom ;
+                    ns1:argument1 :S ;
+                    ns1:classPredicate SA_InformationModel:Status ] ;
+            rdf:rest [ a ns1:AtomList ;
+                    rdf:first [ a ns1:DatavaluedPropertyAtom ;
+                            ns1:argument1 :S ;
+                            ns1:argument2 :BP ;
+                            ns1:propertyPredicate SA_InformationModel:BatteryPercentage ] ;
+                    rdf:rest [ a ns1:AtomList ;
+                            rdf:first [ a ns1:BuiltinAtom ;
+                                    ns1:arguments [ a rdf:List ;
+                                            rdf:first :BP ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 10 ;
+                                                    rdf:rest () ] ] ;
+                                    ns1:builtin <http://www.w3.org/2003/11/swrlb#lessThan> ] ;
+                            rdf:rest () ] ] ] ;
+    ns1:head [ a ns1:AtomList ;
+            rdf:first [ a ns1:DatavaluedPropertyAtom ;
+                    ns1:argument1 :S ;
+                    ns1:argument2 true ;
+                    ns1:propertyPredicate SA_InformationModel:BatteryCritical ] ;
+            rdf:rest () ] .
+
