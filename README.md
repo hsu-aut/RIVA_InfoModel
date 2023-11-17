@@ -1,2 +1,6 @@
 # RIVA_InfoModel
-This repository contains documentation on the information model developed for autonomous mobile robots
+
+# Towards Semantic Interoperability: An Information Model for Autonomous Mobile  Robots
+Marvin Zager, Christoph Sieber and Alexander Fay
+ 
+If you refer to this work, a citation is appreciated
